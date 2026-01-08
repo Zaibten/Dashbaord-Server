@@ -1624,11 +1624,12 @@ async function start() {
 }
 
 start();
+app.get("/", (req, res) => {
+  res.send("🚀 Labour Hub APIs are running!");
+});
 
-// Root endpoint
-app.get("/", (req, res) => res.send("🚀 Labour Hub APIs areS running!"));
+// ❌ REMOVE app.listen()
+// app.listen(port)
 
-const port = process.env.PORT || 3000;
-app.listen(port, () =>
-  console.log(`✅ Server running at http://localhost:${port}`)
-);
+// ✅ EXPORT app for Vercel
+export default app;
